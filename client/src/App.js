@@ -1,6 +1,9 @@
 import './styles/App.css';
 import React from 'react'
-import { Routes, Route} from 'react-router-dom'
+import {useState} from 'react'
+import {  Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom';
+import {SearchValueContext, SearchResultsContext} from './components/SearchContext'
 
 import Home from './pages/Home';
 import Deals from './pages/Deals';
@@ -11,7 +14,13 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer';
 
 function App() {
+  const [searchValue, setSearchValue] = useState('hello')
+  const [searchResults, setSearchResults] = useState([])
+
   return (
+    <SearchValueContext.Provider value={{searchValue, setSearchValue}}>
+    <SearchResultsContext.Provider value={{searchResults, setSearchResults}}>
+    <Router>
     <div className="App">
       <Nav />
       <main>
@@ -25,6 +34,9 @@ function App() {
       </main>
       <Footer/>
     </div>
+    </Router>
+    </SearchResultsContext.Provider>
+    </SearchValueContext.Provider>
   );
 }
 

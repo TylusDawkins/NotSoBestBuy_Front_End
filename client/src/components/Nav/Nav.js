@@ -1,7 +1,7 @@
 import '../../styles/Nav.css'
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
-
+import products from '../../data/products'
 const Nav = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-mainbg'>
@@ -43,7 +43,7 @@ const Nav = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <SearchBar placeholder={'Search our products'}/>
+                    <SearchBar placeholder={'Search our products'} data={products}/>
                 </div>
 
         </nav>

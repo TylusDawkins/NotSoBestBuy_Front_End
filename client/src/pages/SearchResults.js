@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from "react";
-
+import React, {useState, useEffect, useContext} from "react";
+import { SearchResultsContext, SearchValueContext } from "../components/SearchContext";
 
 const SearchResults = () => {
 
-const [searchQuery, setSearchQuery] = useState('')
-const [searchResults, setSearchResults] = useState([])
-const [searching, setSearching] = useState(false)
+const {searchValue, setSearchValue} = useContext(SearchValueContext)
+const {searchResults, setSearchResults} = useContext(SearchResultsContext)
 
-// useEffect(() => )
     return (
         <div>
             <h1>Search Results</h1>
+            <h2>{searchValue}</h2>
+            <ul>
+                {searchResults.map((value) => (
+                    <li>{value.Name}</li>
+                ))}
+            </ul>
             <section className="searchResults">
 
             </section>

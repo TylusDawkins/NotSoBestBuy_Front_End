@@ -9,15 +9,12 @@ const {searchResults, setSearchResults} = useContext(SearchResultsContext)
     return (
         <div>
             <h1>Search Results</h1>
-            <h2>{searchValue}</h2>
-            <ul>
-                {searchResults.map((value) => (
+            {/* <h2>{searchValue}</h2> */}
+            <ul className="searchResults">
+                {searchResults.length !==0 && searchResults.map((value) => (
                     <li>{value.Name}</li>
                 ))}
             </ul>
-            <section className="searchResults">
-
-            </section>
         </div>
     );
 }

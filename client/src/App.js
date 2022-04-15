@@ -14,8 +14,9 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer';
 
 function App() {
-  const [searchValue, setSearchValue] = useState('hello')
+  const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [searching, setSearching] = useState("")
 
   return (
     <SearchValueContext.Provider value={{searchValue, setSearchValue}}>

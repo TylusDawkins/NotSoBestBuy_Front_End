@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import React from 'react'
 import { Routes, Route} from 'react-router-dom'
 
@@ -7,10 +7,13 @@ import Deals from './pages/Deals';
 import Cart from './pages/Cart';
 import ProductPage from './pages/ProductPage';
 import SearchResults from './pages/SearchResults';
+import Nav from './components/Nav/Nav';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
+      <Nav />
       <main>
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -20,6 +23,7 @@ function App() {
         <Route path='/search' element={<SearchResults/>}/>
       </Routes>
       </main>
+      <Footer/>
     </div>
   );
 }

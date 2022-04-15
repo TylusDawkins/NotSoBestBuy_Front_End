@@ -27,3 +27,19 @@ input:focus {
     display: grid;
     place-items: center;
 }
+
+
+.suggestions{
+    height: 100px;
+    margin-top: 5px;
+    box-shadow: black 0px 5px 7px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.suggestions::-webkit-scrollbar {
+    display: none;
+}
+
+#clear {
+    cursor: pointer;
+}

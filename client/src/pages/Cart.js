@@ -1,12 +1,12 @@
 import React, {useContext} from 'react'
-import { SearchValueContext } from '../components/SearchContext';
+import { SearchValueContext, SearchResultsContext } from '../components/SearchContext';
 
 const Cart = () => {
-    const {searchValue, setSearchValue} = useContext(SearchValueContext)
+    const {searchResults, setSearchResults} = useContext(SearchResultsContext)
     return (
         <div>
             <h1>Cart</h1>
-            <h2>{searchValue}</h2>
+            {/* <h2>{searchResults.Name}</h2> */}
         </div>
     );
 }

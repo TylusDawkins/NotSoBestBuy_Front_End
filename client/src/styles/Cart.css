@@ -1,0 +1,12 @@
+.cart{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-list{
+    flex: 2;
+}
+
+.summary-list {
+    flex: 1;
+}

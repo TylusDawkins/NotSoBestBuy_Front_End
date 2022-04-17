@@ -3,10 +3,11 @@ import '../../styles/SearchBar.css'
 import {useState, useEffect, useContext} from "react";
 import { SearchValueContext, SearchResultsContext, SearchingContext} from '../SearchContext';
 import products from '../../data/products'
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const SearchBar = ({placeholder}) => {
+    let navigate = useNavigate()
     const {searchValue, setSearchValue} = useContext(SearchValueContext)
     const {SearchResults, setSearchResults} = useContext(SearchResultsContext)
     const [searching, setSearching] = useState("")
@@ -29,9 +30,14 @@ const SearchBar = ({placeholder}) => {
     }
 
     const handleClick = () => {
+        if (searchValue.length === 0) {
+            navigate('/deals')
+        }
+        else {
         setSearchResults(searchValue)
         setSearchValue([])
         setSearching("")
+        navigate('/search')}
     }
 
     
@@ -47,11 +53,9 @@ const SearchBar = ({placeholder}) => {
             </div>)}
             </div> 
             <div className="searchIcon">
-            <Link to="/search">
             <button onClick={handleClick}>
                 <i className="fa-solid fa-magnifying-glass"></i>
             </button>
-            </Link>
             </div>
             </div>
             <div className="searchResponse"></div>

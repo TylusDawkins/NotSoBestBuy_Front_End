@@ -30,6 +30,8 @@ input:focus {
 
 
 .suggestions{
+    display: flex;
+    flex-direction: column;
     height: 100px;
     margin-top: 5px;
     box-shadow: black 0px 5px 7px;
@@ -42,4 +44,13 @@ input:focus {
 
 #clear {
     cursor: pointer;
+}
+.predictiveSearch button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.predictiveSearch button:hover {
+    text-decoration: underline;
 }

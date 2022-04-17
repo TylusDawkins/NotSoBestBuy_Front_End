@@ -13,12 +13,19 @@ const SearchBar = ({placeholder}) => {
     const [searching, setSearching] = useState("")
 
     const handleChange = (e) => {
-        let searchPrompt = e.target.value
+        let searchPrompt
+        if (e.target.value.length !== 0 ){
+            searchPrompt = e.target.value
+        }
+        else if (e.target.innerHTML.length !== 0) {
+            searchPrompt = e.target.innerHTML
+        }
         setSearching(searchPrompt)
         console.log(e.target.value)
         let newSearch = products.filter((product) => {
             return product.Name.toLowerCase().includes(searchPrompt.toLowerCase())
         })
+        console.log(searching)
         console.log(newSearch)
         if (searchPrompt === "") {
             setSearchValue([])
@@ -39,16 +46,15 @@ const SearchBar = ({placeholder}) => {
         setSearching("")
         navigate('/search')}
     }
-
     
     return (
         <div className="search">
             <div className="searchInput">
             <div className="predictiveSearch">
-            <input type='text' placeholder={placeholder} value={searching}onChange={handleChange}/>
+            <input type='text' placeholder={placeholder} value={searching} onChange={handleChange}/>
             {searchValue.length !==0  && (<div className="suggestions">
             {searchValue.slice(0, 5).map((product) => (
-                <p>{product.Name}</p>
+                <button onClick={handleChange}>{product.Name}</button>
             ))}
             </div>)}
             </div> 

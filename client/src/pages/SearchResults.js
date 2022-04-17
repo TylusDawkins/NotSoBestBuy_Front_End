@@ -8,19 +8,18 @@ const {searchValue, setSearchValue} = useContext(SearchValueContext)
 const {searchResults, setSearchResults} = useContext(SearchResultsContext)
 
     return (
-        <div>
+        <div className="container">
             <h1>Search Results</h1>
-            {/* <h2>{searchValue}</h2> */}
-            <ul className="searchResults">
+            <div className="searchResults">
                 {searchResults.length !==0 && searchResults.map((value) => (
-                    <li>
+                    <div>
                         <Products 
                             Name={value.Name}
                             Image={value.Image}
                             Price={value.Price}/>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

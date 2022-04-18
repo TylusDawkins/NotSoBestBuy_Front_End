@@ -1,0 +1,40 @@
+.deal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: aqua;
+    margin: 45px;
+}
+
+.dealsbar {
+    /* max-height: 100px;
+    max-width: 100px; */
+    font-size: small;
+    margin: 10px;
+    text-align: center;
+} 
+
+.dealsbar img{
+    height: 100px;
+    width: 110px;
+    align-self: center;
+}
+
+.dealsbar h3{
+    font-size: small;
+}
+
+.dealsbar a {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+} 
+
+.dealsbar .product {
+    border: none;
+    padding: 10px;
+    margin: 10px;
+}
+

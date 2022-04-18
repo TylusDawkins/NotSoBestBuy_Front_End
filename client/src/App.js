@@ -14,6 +14,8 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer';
 
 function App() {
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [searching, setSearching] = useState("")

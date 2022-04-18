@@ -13,7 +13,7 @@ const SearchBar = ({placeholder}) => {
     const [searching, setSearching] = useState("")
 
     const handleChange = (e) => {
-        let searchPrompt
+        let searchPrompt = ""
         if (e.target.value.length !== 0 ){
             searchPrompt = e.target.value
         }
@@ -22,8 +22,10 @@ const SearchBar = ({placeholder}) => {
         }
         setSearching(searchPrompt)
         console.log(e.target.value)
+
         let newSearch = products.filter((product) => {
             return product.Name.toLowerCase().includes(searchPrompt.toLowerCase())
+
         })
         console.log(searching)
         console.log(newSearch)

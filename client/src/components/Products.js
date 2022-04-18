@@ -3,7 +3,6 @@ import '../styles/Product.css'
 
 const Products = (props) => {
     return (
-        <div className="product-container">
                 <div className="product">
                 <img className="small" src={props.Image} alt={props.Name}/>
                 <h3>{props.Name}</h3>
@@ -12,7 +11,6 @@ const Products = (props) => {
                     <button className="cart-btn">Add To Cart</button>
                 </div>
                 </div>
-        </div>
     );
 }
 

@@ -16,9 +16,20 @@ img.small {
 .product {
     display: flex;
     flex-direction: column;
+    border: thin black solid;
+    border-radius: 5%;
+    width: 400px;
+    height: 100%;
+    padding: 2rem;
 }
 
 .product-container{
     display: flex;
     justify-content: space-around;
+    
+}
+
+.details img{
+    width: 500px;
+    height: 520px;
 }

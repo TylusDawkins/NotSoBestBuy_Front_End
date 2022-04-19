@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { SignInUser } from '../services/Auth'
+import { useNavigate } from "react-router-dom";
 
 const SignIn = (props) => {
     const [formValues, setFormValues] = useState({email: '', password: ''})
     const handleChange = (e) => {
         setFormValues({...formValues, [e.target.name]: e.target.value})
     }
+    let navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const payload = await SignInUser(formValues)
+        setFormValues({email: '', password: ''})
+        props.setUser(payload)
+        props.toggleAuthenticated(true)
+        navigate('/deals')
     }
     return (
         <div className="signin col">

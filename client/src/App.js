@@ -14,6 +14,7 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer';
 import Register from './pages/Register'
 import SignIn from './pages/SignIn';
+import Checkout from './pages/Checkout';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -50,6 +51,9 @@ function App() {
                                           setUser={setUser} 
                                           toggleAuthenticated={toggleAuthenticated}/>}/>
         <Route path='/search' element={<SearchResults/>}/>
+        <Route path='/checkout' element={<Checkout 
+                                              user={user}
+                                              authenticated={authenticated}/>}/>
       </Routes>
       </main>
       <Footer/>

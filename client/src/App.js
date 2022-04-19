@@ -13,6 +13,7 @@ import SearchResults from './pages/SearchResults';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer';
 import Register from './pages/Register'
+import SignIn from './pages/SignIn';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -36,6 +37,7 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/product/:id' element={<ProductPage/>}/>
         <Route path='/register' element={<Register />}/>
+        <Route path='/signin' element={<SignIn/>}/>
         <Route path='/search' element={<SearchResults/>}/>
       </Routes>
       </main>

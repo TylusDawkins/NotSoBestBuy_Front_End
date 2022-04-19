@@ -43,7 +43,21 @@ const Nav = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <SearchBar placeholder={'Search our products'} data={products}/>
+                            <SearchBar placeholder={'Search our products'} data={products}/>
+                        <ul className='navbar-nav mr-auto'>
+
+                        <li className='nav-item'>
+                            <NavLink className="nav-link" to='/register' exact='true'>
+                                <i className="fa-solid fa-id-card"></i>Register
+                            </NavLink>
+                        </li>
+                        <li className='nav-item'>
+                            <NavLink className="nav-link" to='/signin' exact='true'>
+                                <i className="fa-solid fa-arrow-right-to-bracket"></i>SignIn
+                            </NavLink>
+                        </li>
+                        </ul>
+
                 </div>
         </nav>
     );

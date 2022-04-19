@@ -3,17 +3,31 @@ import { SearchResultsContext, SearchValueContext } from "../components/SearchCo
 import Products from "../components/Products";
 import { Link } from "react-router-dom";
 import "../styles/Product.css"
+import Filter from '../components/Filter'
+import '../styles/SearchResults.css'
 
 const SearchResults = () => {
 
 const {searchValue, setSearchValue} = useContext(SearchValueContext)
 const {searchResults, setSearchResults} = useContext(SearchResultsContext)
+const [categoryFilter, setCategoryFilter] = useState([])
+const [categoryButton, toggleCategoryButton] = useState(false)
+const [priceFilter, setPriceFilter] = useState([])
+const [priceButton, togglePriceButton] = useState(false)
+
 
     return (
         <div className="container">
-            <h1>Search Results</h1>
+            <div>
+
+            <Filter
+                toggleCategoryButton={toggleCategoryButton}
+                togglePriceButton={togglePriceButton}
+                searchResults={searchResults}/>
+            </div>
             <div className="searchResults">
-                {searchResults.length !==0 && searchResults.map((value) => (
+            <h1>Search Results</h1>
+                {!categoryButton && !priceButton && searchResults.length !==0 && searchResults.map((value) => (
                     <div className="product-container" >
                         <Link to={`/product/${value.id}`}>
                         <Products
@@ -24,7 +38,9 @@ const {searchResults, setSearchResults} = useContext(SearchResultsContext)
                         </Link>
                     </div>
                 ))}
+                {/* {categoryButton && searchResults.length !==0 && searchRes} */}
             </div>
+            
         </div>
     );
 }

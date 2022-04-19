@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { SignInUser } from '../services/Auth'
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [formValues, setFormValues] = useState({email: '', password: ''})
     const handleChange = (e) => {
         setFormValues({...formValues, [e.target.name]: e.target.value})

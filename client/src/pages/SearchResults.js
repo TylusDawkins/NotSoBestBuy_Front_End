@@ -22,7 +22,8 @@ const [priceButton, togglePriceButton] = useState(false)
 
             <Filter
                 toggleCategoryButton={toggleCategoryButton}
-                togglePriceButton={togglePriceButton}/>
+                togglePriceButton={togglePriceButton}
+                searchResults={searchResults}/>
             </div>
             <div className="searchResults">
             <h1>Search Results</h1>
@@ -37,6 +38,7 @@ const [priceButton, togglePriceButton] = useState(false)
                         </Link>
                     </div>
                 ))}
+                {/* {categoryButton && searchResults.length !==0 && searchRes} */}
             </div>
             
         </div>

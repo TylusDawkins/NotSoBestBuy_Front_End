@@ -1,5 +1,7 @@
 img.small {
     max-height: 8rem;
+    /* border-radius: 50%; */
+    transform: scale(.9);
 }
 
 .cart-btn {

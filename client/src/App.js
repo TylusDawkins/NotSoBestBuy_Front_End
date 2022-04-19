@@ -1,6 +1,6 @@
 import './styles/App.css';
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {  Routes, Route} from 'react-router-dom'
 import { BrowserRouter as Router} from 'react-router-dom';
 import {SearchValueContext, SearchResultsContext} from './components/SearchContext'
@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import Register from './pages/Register'
 import SignIn from './pages/SignIn';
 import Checkout from './pages/Checkout';
+import { CheckSession } from './services/Auth'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -28,8 +29,19 @@ function App() {
     toggleAuthenticated(false)
     localStorage.clear()
   }
-  
 
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+    toggleAuthenticated(true)
+  }
+  
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
   return (
     <SearchValueContext.Provider value={{searchValue, setSearchValue}}>
     <SearchResultsContext.Provider value={{searchResults, setSearchResults}}>

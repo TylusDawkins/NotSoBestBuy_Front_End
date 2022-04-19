@@ -15,11 +15,14 @@ const [categoryButton, toggleCategoryButton] = useState(false)
 const [priceFilter, setPriceFilter] = useState([])
 const [priceButton, togglePriceButton] = useState(false)
 
+
     return (
         <div className="container">
             <div>
 
-            <Filter/>
+            <Filter
+                toggleCategoryButton={toggleCategoryButton}
+                togglePriceButton={togglePriceButton}/>
             </div>
             <div className="searchResults">
             <h1>Search Results</h1>

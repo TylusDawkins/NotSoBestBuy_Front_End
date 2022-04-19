@@ -1,8 +1,35 @@
 import '../../styles/Nav.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import products from '../../data/products'
-const Nav = () => {
+const Nav = ({authenticated, user, handleLogOut}) => {
+    let authenticatedOptions
+    if (user) {
+        authenticatedOptions = 
+        <ul className='navbar-nav mr-auto'>
+            <li className='nav-item'>
+        <NavLink onClick={handleLogOut} to='/'>
+            Sign Out
+        </NavLink>
+            </li>
+        </ul>
+    }
+
+    const publicOptions = (
+        <ul className='navbar-nav mr-auto'>
+                        <li className='nav-item'>
+                            <NavLink className="nav-link" to='/register' exact='true'>
+                                <i className="fa-solid fa-id-card"></i>Register
+                            </NavLink>
+                        </li>
+                        <li className='nav-item'>
+                            <NavLink className="nav-link" to='/signin' exact='true'>
+                                <i className="fa-solid fa-arrow-right-to-bracket"></i>SignIn
+                            </NavLink>
+                        </li>
+                        </ul>
+    )
+
     return (
         <nav className='navbar navbar-expand-lg navbar-mainbg'>
             <NavLink className="navbar-brand navbar-logo" to="/" exact="true">
@@ -44,20 +71,7 @@ const Nav = () => {
                         </li>
                     </ul>
                             <SearchBar placeholder={'Search our products'} data={products}/>
-                        <ul className='navbar-nav mr-auto'>
-
-                        <li className='nav-item'>
-                            <NavLink className="nav-link" to='/register' exact='true'>
-                                <i className="fa-solid fa-id-card"></i>Register
-                            </NavLink>
-                        </li>
-                        <li className='nav-item'>
-                            <NavLink className="nav-link" to='/signin' exact='true'>
-                                <i className="fa-solid fa-arrow-right-to-bracket"></i>SignIn
-                            </NavLink>
-                        </li>
-                        </ul>
-
+                        {authenticated && user ? authenticatedOptions : publicOptions}
                 </div>
         </nav>
     );

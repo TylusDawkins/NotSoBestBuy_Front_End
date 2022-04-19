@@ -22,6 +22,11 @@ function App() {
   const [searchResults, setSearchResults] = useState([])
   const [searching, setSearching] = useState("")
 
+  const handleLogOut = () => {
+    setUser(null)
+    toggleAuthenticated(false)
+    localStorage.clear()
+  }
   
 
   return (
@@ -29,7 +34,11 @@ function App() {
     <SearchResultsContext.Provider value={{searchResults, setSearchResults}}>
     <Router>
     <div className="App">
-      <Nav />
+      <Nav 
+        authenticated={authenticated}
+        user={user}
+        handleLogOut={handleLogOut}
+      />
       <main>
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -37,7 +46,9 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/product/:id' element={<ProductPage/>}/>
         <Route path='/register' element={<Register />}/>
-        <Route path='/signin' element={<SignIn/>}/>
+        <Route path='/signin' element={<SignIn 
+                                          setUser={setUser} 
+                                          toggleAuthenticated={toggleAuthenticated}/>}/>
         <Route path='/search' element={<SearchResults/>}/>
       </Routes>
       </main>

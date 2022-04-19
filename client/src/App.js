@@ -12,6 +12,7 @@ import ProductPage from './pages/ProductPage';
 import SearchResults from './pages/SearchResults';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer';
+import Register from './pages/Register'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -19,6 +20,8 @@ function App() {
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [searching, setSearching] = useState("")
+
+  
 
   return (
     <SearchValueContext.Provider value={{searchValue, setSearchValue}}>
@@ -32,6 +35,7 @@ function App() {
         <Route path='/deals' element={<Deals/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/product/:id' element={<ProductPage/>}/>
+        <Route path='/register' element={<Register />}/>
         <Route path='/search' element={<SearchResults/>}/>
       </Routes>
       </main>

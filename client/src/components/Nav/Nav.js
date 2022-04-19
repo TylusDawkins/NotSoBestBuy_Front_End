@@ -45,7 +45,6 @@ const Nav = () => {
                     </ul>
                     <SearchBar placeholder={'Search our products'} data={products}/>
                 </div>
-
         </nav>
     );
 }

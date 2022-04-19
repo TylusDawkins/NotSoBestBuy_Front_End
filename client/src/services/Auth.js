@@ -18,3 +18,12 @@ export const SignInUser = async (data) => {
         throw error
     }
 }
+
+export const CheckSession = async () => {
+    try {
+        const res = await Client.get('/auth/session')
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

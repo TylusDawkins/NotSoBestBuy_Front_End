@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.searchResults {
+    flex: 3;
+}
+
+.filter {
+    flex: 1;
+}

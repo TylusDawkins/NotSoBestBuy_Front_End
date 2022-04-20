@@ -7,11 +7,8 @@ const Filter = (props) => {
             return [category.Category_name,category.Category_id]
         })
         let catIdObject = Object.fromEntries(catIdArray)
-        console.log(catIdObject)
         let catIdObjectKeys = Object.keys(catIdObject)
-        console.log(catIdObjectKeys)
-        let {id} = useParams()
-        console.log({id})
+        let {id, val} = useParams()
 
     return (
         <div className="filter">
@@ -21,34 +18,38 @@ const Filter = (props) => {
                     {id==="0" && <h5>Categories</h5>}
                 { id==="0" && catIdObjectKeys.map((category) => (
                     <div>
-                        <Link to={`/search/${catIdObject[category]}`}>{catIdObject.category}{category}</Link>
+                        <Link to={`/search/${catIdObject[category]}/${val}`}><label>{category}</label></Link>
                     </div>
                 ))}
                 </div>
                     <div>
                     <h5>Price</h5>
-                <input type="checkbox" id="price-input" name="price-input"/>
-                    <label>$0 - $200</label>
+                <Link to={`/search/${id}/200`}> <label>$200 or less</label></Link>
+                    
                     </div>
                     <div>
-                <input type="checkbox" id="price-input" name="price-input"/>
-                    <label>$200 - $400</label>
+                <Link to={`/search/${id}/400`}><label>$400 or less</label></Link>
+                    
                     </div>
                     <div>
-                <input type="checkbox" id="price-input" name="price-input"/>
-                    <label>$400 - $600</label>
+                <Link to={`/search/${id}/600`}><label>$600 or less</label></Link>
+                    
                     </div>
                     <div>
-                <input type="checkbox" id="price-input" name="price-input"/>
-                    <label>$600 - $800</label>
+                <Link to={`/search/${id}/800`}><label>$800 or less</label></Link>
+                    
                     </div>
                     <div>
-                <input type="checkbox" id="price-input" name="price-input"/>
-                    <label>$800 - $1000</label>
+                <Link to={`/search/${id}/1000`}><label>$1000 or less</label></Link>
+                    
                     </div>
                     <div>
-                <input type="checkbox" id="price-input" name="price-input"/>
-                    <label>$1000 - $2000</label>
+                <Link to={`/search/${id}/2000`}><label>$2000 or less</label></Link>
+                    
+                </div>
+                    <div>
+                <Link to={`/search/${id}/2001`}><label>$2000 or more</label></Link>
+                    
                 </div>
             </aside>
         </div>

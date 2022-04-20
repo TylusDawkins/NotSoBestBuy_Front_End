@@ -62,11 +62,10 @@ function App() {
         <Route path='/signin' element={<SignIn 
                                           setUser={setUser} 
                                           toggleAuthenticated={toggleAuthenticated}/>}/>
-        <Route path='/search/:id' element={<SearchResults/>}/>
+        <Route path='/search/:id/:val' element={<SearchResults/>}/>
         <Route path='/checkout' element={<Checkout 
                                               user={user}
                                               authenticated={authenticated}/>}/>
-        {/* <Route path='/search/:id' */}
       </Routes>
       </main>
       <Footer/>

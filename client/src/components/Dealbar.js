@@ -8,7 +8,7 @@ const Dealbar = (props) => {
     let newDeal = products.filter((product) => {
         return product.Category_id === props.id
     })
-    console.log(newDeal)
+    
     return (
         <div>
             <h4>{newDeal[1].Category_name}</h4>

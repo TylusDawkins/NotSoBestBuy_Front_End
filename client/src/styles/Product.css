@@ -32,6 +32,46 @@ img.small {
 }
 
 .details img{
-    width: 500px;
-    height: 520px;
+    width: 150px;
+    height: 160px;
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.main-items {
+    flex: 2;
+}
+
+.similar-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.similar-items img{
+    height: 100px;
+    width: 110px;
+    align-self: center;
+}
+
+.similar-items h3{
+    font-size: medium;
+}
+
+.similar-items a {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+} 
+
+.similar-items .product {
+    border: none;
+    padding: 10px;
+    margin: 10px;
 }

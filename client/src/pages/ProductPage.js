@@ -2,6 +2,7 @@ import products from "../data/products";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import '../styles/Product.css'
+import SimilarItems from "../components/SimilarItems";
 
 const ProductPage = () => {
     let {id} = useParams()
@@ -12,12 +13,16 @@ const ProductPage = () => {
         )
         setSelectedProduct(selectProduct)
         
-    }, [])
+    }, [id])
     return (
         <div className="details">
+            <div className="main-item">
             <h2>{selectedProduct.Name}</h2>
             <img src={selectedProduct.Image}/>
             <p>{selectedProduct.Description}</p>
+            </div>
+            <SimilarItems selectedProductCat={selectedProduct.Category_name}
+                        selectedProductId={selectedProduct.id}/>
         </div>
     );
 }

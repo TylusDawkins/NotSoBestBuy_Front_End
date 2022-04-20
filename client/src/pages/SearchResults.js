@@ -15,6 +15,13 @@ const [categoryButton, toggleCategoryButton] = useState(false)
 const [priceFilter, setPriceFilter] = useState([])
 const [priceButton, togglePriceButton] = useState(false)
 
+// const categorySelect = () => {
+//     if (categoryButton) {
+//         setCategoryFilter(searchResults.filter((category) => {
+//             return category.Category_name === 
+//         }))
+//     }
+// }
 
     return (
         <div className="container">

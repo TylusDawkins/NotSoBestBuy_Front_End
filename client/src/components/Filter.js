@@ -21,8 +21,8 @@ const Filter = (props) => {
             <aside>
                 <h2>Filter</h2>
                 <div> 
-                    {id==="0" && <h5>Categories</h5>}
-                { id==="0" && catIdObjectKeys.map((category) => (
+                    {<h5>Categories</h5>}
+                {catIdObjectKeys.map((category) => (
                     <div>
                         <Link onClick={handleClickCat} to={`/search/${catIdObject[category]}/${val}`}><label>{category}</label></Link>
                     </div>
@@ -31,7 +31,6 @@ const Filter = (props) => {
                     <div>
                     <h5>Price</h5>
                 <Link onClick={handleClickPrice} to={`/search/${id}/200`}> <label>$200 or less</label></Link>
-                    
                     </div>
                     <div>
                 <Link onClick={handleClickPrice} to={`/search/${id}/400`}><label>$400 or less</label></Link>

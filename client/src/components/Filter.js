@@ -1,5 +1,6 @@
 import '../styles/SearchResults.css'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const Filter = (props) => {
         let catIdArray = props.searchResults.map((category) => {
@@ -9,14 +10,16 @@ const Filter = (props) => {
         console.log(catIdObject)
         let catIdObjectKeys = Object.keys(catIdObject)
         console.log(catIdObjectKeys)
+        let {id} = useParams()
+        console.log({id})
 
     return (
         <div className="filter">
             <aside>
                 <h2>Filter</h2>
                 <div> 
-                    <h5>Categories</h5>
-                {catIdObjectKeys.map((category) => (
+                    {id==="0" && <h5>Categories</h5>}
+                { id==="0" && catIdObjectKeys.map((category) => (
                     <div>
                         <Link to={`/search/${catIdObject[category]}`}>{catIdObject.category}{category}</Link>
                     </div>

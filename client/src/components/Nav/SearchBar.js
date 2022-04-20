@@ -44,7 +44,7 @@ const SearchBar = ({placeholder}) => {
         setSearchResults(searchValue)
         setSearchValue([])
         setSearching("")
-        navigate('/search')}
+        navigate('/search/0')}
     }
     
     return (

@@ -16,35 +16,32 @@ let {id, val} = useParams()
 const [catfilteredResults, setCatFilteredResults] = useState([])
 const [pricefilteredResults, setPriceFilteredResults] = useState([])
 const [view, setView] = useState(false)
+
 useEffect(() => {
     let filtering = []
     if (val === "0" && id !== "0") {
         filtering = searchResults.filter((results) => {
             return results.Category_id === parseInt(id)
         })
+        setCatFilteredResults(filtering)
     }
-    else if (val !=="0" && id!== "0"){
-        filtering = pricefilteredResults.filter((results) => {
+    else if (val !=="0" && id!=="0"){
+        let firstFilter = searchResults.filter((results) => {
             return results.Category_id === parseInt(id)
+        }).filter((res) => {
+            return res.Price <= parseInt(val)
         })
+        
+        setCatFilteredResults(firstFilter)
+        setPriceFilteredResults(firstFilter)
     }
-    setCatFilteredResults(filtering)
-}, [id])
-
-useEffect(() => {
-    let filtering = []
-    if (id ==="0" && val !== "0") {
+    else if (id ==="0" && val !=="0") {
         filtering = searchResults.filter((results) => {
         return results.Price <= parseInt(val)}
-    )}
-    else if (id !== '0' && val !== "0") {
-        filtering = catfilteredResults.filter((results) => {
-            return results.Price <= parseInt(val)
-        })
-    }
+    )
     setPriceFilteredResults(filtering)
-    console.log(pricefilteredResults)
-}, [val])
+}
+}, [id, val, searchResults])
 
     return (
         <div className="container">
@@ -68,7 +65,7 @@ useEffect(() => {
                     </div>
                 ))}
 
-                {!view && catfilteredResults.length !==0 && catfilteredResults.map((value) => (
+                {id !== "0" && !view && catfilteredResults.length !==0 && catfilteredResults.map((value) => (
                                     <div className="product-container" >
                                         <Link to={`/product/${value.id}`}>
                                         <Products
@@ -79,7 +76,7 @@ useEffect(() => {
                                         </Link>
                                     </div>
                                 ))}
-                {view && pricefilteredResults.length !==0 && pricefilteredResults.map((value) => (
+                {val !== "0" && view && pricefilteredResults.length !==0 && pricefilteredResults.map((value) => (
                                     <div className="product-container" >
                                         <Link to={`/product/${value.id}`}>
                                         <Products

@@ -10,6 +10,12 @@ const Filter = (props) => {
         let catIdObjectKeys = Object.keys(catIdObject)
         let {id, val} = useParams()
 
+        const handleClickCat = () => {
+            props.setView(false)
+        }
+        const handleClickPrice = () => {
+            props.setView(true)
+        }
     return (
         <div className="filter">
             <aside>
@@ -18,37 +24,37 @@ const Filter = (props) => {
                     {id==="0" && <h5>Categories</h5>}
                 { id==="0" && catIdObjectKeys.map((category) => (
                     <div>
-                        <Link to={`/search/${catIdObject[category]}/${val}`}><label>{category}</label></Link>
+                        <Link onClick={handleClickCat} to={`/search/${catIdObject[category]}/${val}`}><label>{category}</label></Link>
                     </div>
                 ))}
                 </div>
                     <div>
                     <h5>Price</h5>
-                <Link to={`/search/${id}/200`}> <label>$200 or less</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/200`}> <label>$200 or less</label></Link>
                     
                     </div>
                     <div>
-                <Link to={`/search/${id}/400`}><label>$400 or less</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/400`}><label>$400 or less</label></Link>
                     
                     </div>
                     <div>
-                <Link to={`/search/${id}/600`}><label>$600 or less</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/600`}><label>$600 or less</label></Link>
                     
                     </div>
                     <div>
-                <Link to={`/search/${id}/800`}><label>$800 or less</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/800`}><label>$800 or less</label></Link>
                     
                     </div>
                     <div>
-                <Link to={`/search/${id}/1000`}><label>$1000 or less</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/1000`}><label>$1000 or less</label></Link>
                     
                     </div>
                     <div>
-                <Link to={`/search/${id}/2000`}><label>$2000 or less</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/2000`}><label>$2000 or less</label></Link>
                     
                 </div>
                     <div>
-                <Link to={`/search/${id}/2001`}><label>$2000 or more</label></Link>
+                <Link onClick={handleClickPrice} to={`/search/${id}/2001`}><label>$2000 or more</label></Link>
                     
                 </div>
             </aside>

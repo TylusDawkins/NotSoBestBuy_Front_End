@@ -15,10 +15,19 @@ const {searchResults, setSearchResults} = useContext(SearchResultsContext)
 let {id, val} = useParams()
 const [catfilteredResults, setCatFilteredResults] = useState([])
 const [pricefilteredResults, setPriceFilteredResults] = useState([])
+const [view, setView] = useState(false)
 useEffect(() => {
-    let filtering = searchResults.filter((results) => {
-        return results.Category_id === parseInt(id)
-    })
+    let filtering = []
+    if (val === "0" && id !== "0") {
+        filtering = searchResults.filter((results) => {
+            return results.Category_id === parseInt(id)
+        })
+    }
+    else if (val !=="0" && id!== "0"){
+        filtering = pricefilteredResults.filter((results) => {
+            return results.Category_id === parseInt(id)
+        })
+    }
     setCatFilteredResults(filtering)
 }, [id])
 
@@ -42,6 +51,7 @@ useEffect(() => {
             <div>
 
             <Filter
+                setView={setView}
                 searchResults={searchResults}/>
             </div>
             <div className="searchResults">
@@ -58,7 +68,7 @@ useEffect(() => {
                     </div>
                 ))}
 
-                {val=== "0" && catfilteredResults.length !==0 && catfilteredResults.map((value) => (
+                {!view && catfilteredResults.length !==0 && catfilteredResults.map((value) => (
                                     <div className="product-container" >
                                         <Link to={`/product/${value.id}`}>
                                         <Products
@@ -69,7 +79,7 @@ useEffect(() => {
                                         </Link>
                                     </div>
                                 ))}
-                {pricefilteredResults.length !==0 && pricefilteredResults.map((value) => (
+                {view && pricefilteredResults.length !==0 && pricefilteredResults.map((value) => (
                                     <div className="product-container" >
                                         <Link to={`/product/${value.id}`}>
                                         <Products

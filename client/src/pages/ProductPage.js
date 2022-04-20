@@ -6,7 +6,6 @@ import '../styles/Product.css'
 const ProductPage = () => {
     let {id} = useParams()
     const [selectedProduct, setSelectedProduct] = useState('')
-    console.log(id)
     useEffect(() => {
         let selectProduct = products.find(
             (product) => product.id === parseInt(id)
@@ -14,7 +13,6 @@ const ProductPage = () => {
         setSelectedProduct(selectProduct)
         
     }, [])
-    console.log(selectedProduct)
     return (
         <div className="details">
             <h2>{selectedProduct.Name}</h2>

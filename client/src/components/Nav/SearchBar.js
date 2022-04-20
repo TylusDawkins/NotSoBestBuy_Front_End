@@ -21,7 +21,6 @@ const SearchBar = ({placeholder}) => {
             searchPrompt = e.target.innerHTML
         }
         setSearching(searchPrompt)
-        console.log(e.target.value)
 
         let newSearch = products.filter((product) => {
             return product.Name.toLowerCase().includes(searchPrompt.toLowerCase())
@@ -33,7 +32,6 @@ const SearchBar = ({placeholder}) => {
         else {
             setSearchValue(newSearch)
         }
-        console.log(searchValue)
     }
 
     const handleClick = () => {
@@ -44,7 +42,7 @@ const SearchBar = ({placeholder}) => {
         setSearchResults(searchValue)
         setSearchValue([])
         setSearching("")
-        navigate('/search')}
+        navigate('/search/0/0')}
     }
     
     return (

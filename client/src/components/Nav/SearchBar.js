@@ -27,8 +27,6 @@ const SearchBar = ({placeholder}) => {
             return product.Name.toLowerCase().includes(searchPrompt.toLowerCase())
 
         })
-        console.log(searching)
-        console.log(newSearch)
         if (searchPrompt === "") {
             setSearchValue([])
         }

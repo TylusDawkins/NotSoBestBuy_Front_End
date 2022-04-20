@@ -1,35 +1,52 @@
 import '../styles/SearchResults.css'
+import { Link } from 'react-router-dom'
 
 const Filter = (props) => {
-    const handleClickCategory = () => {
-        props.toggleCategoryButton((prevVal) => {return !prevVal})
-    }
+        let catIdArray = props.searchResults.map((category) => {
+            return [category.Category_name,category.Category_id]
+        })
+        let catIdObject = Object.fromEntries(catIdArray)
+        console.log(catIdObject)
+        let catIdObjectKeys = Object.keys(catIdObject)
+        console.log(catIdObjectKeys)
 
-    const handleClickPrice = () => {
-        props.togglePriceButton((prevVal) => {return !prevVal})
-    }
-    let catArray = props.searchResults.map((category) => {return category.Category_name})
-    let catFillUnique = new Set(catArray) 
-    let catFill = [...catFillUnique]
     return (
         <div className="filter">
             <aside>
                 <h2>Filter</h2>
-                <div>
+                <div> 
                     <h5>Categories</h5>
-                {catFill.map((category) => (
+                {catIdObjectKeys.map((category) => (
                     <div>
-                        <input onClick={handleClickCategory} type="checkbox" id="cateogry-input" name="category-input"/>
-                            <label>{category}</label>
+                        <Link to={`/search/${catIdObject[category]}`}>{catIdObject.category}{category}</Link>
                     </div>
                 ))}
                 </div>
-                <div>
+                    <div>
                     <h5>Price</h5>
-                <input onClick={handleClickPrice} type="checkbox" id="price-input" name="price-input"/>
-                    <label>Price</label>
+                <input type="checkbox" id="price-input" name="price-input"/>
+                    <label>$0 - $200</label>
+                    </div>
+                    <div>
+                <input type="checkbox" id="price-input" name="price-input"/>
+                    <label>$200 - $400</label>
+                    </div>
+                    <div>
+                <input type="checkbox" id="price-input" name="price-input"/>
+                    <label>$400 - $600</label>
+                    </div>
+                    <div>
+                <input type="checkbox" id="price-input" name="price-input"/>
+                    <label>$600 - $800</label>
+                    </div>
+                    <div>
+                <input type="checkbox" id="price-input" name="price-input"/>
+                    <label>$800 - $1000</label>
+                    </div>
+                    <div>
+                <input type="checkbox" id="price-input" name="price-input"/>
+                    <label>$1000 - $2000</label>
                 </div>
-                
             </aside>
         </div>
     );

@@ -2,6 +2,8 @@ import '../styles/SearchResults.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
+
+//attention
 const Filter = (props) => {
         let catIdArray = props.searchResults.map((category) => {
             return [category.Category_name,category.Category_id]

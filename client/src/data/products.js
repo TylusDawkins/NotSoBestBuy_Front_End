@@ -23,7 +23,7 @@ const products = [
         Price: 399.99,
         Image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6406/6406940cv15d.jpg',
         Description: 'Enjoy a smooth gaming experience with this Dell Alienware gaming monitor. The 24.5-inch Full HD display delivers high-resolution images, while the 240Hz refresh rate and 1ms response time (GtG) ensures real-time display for eliminating image shatters and tearing. This Dell Alienware gaming monitor features DisplayPort, HDMI and USB ports for flexible connectivity, and the ergonomic design allows for tilting, swiveling and pivoting for more vibrant gaming.',
-        Category_name: 'Monitor',
+        Category_name: 'Monitors',
         Category_id: 3
     },
     {
@@ -50,7 +50,7 @@ const products = [
         Price: 1199.99,
         Image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6425/6425569cv30d.jpg',
         Description: 'At 49", and arced to match the curvature of the human eye, the G9 marries unmatched immersion, with unbelievable performance, pixel perfect image quality and incredible visual design.',
-        Category_name: 'Monitor',
+        Category_name: 'Monitors',
         Category_id: 3
     },
     {
@@ -77,7 +77,7 @@ const products = [
         Price: 1199.99,
         Image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6453/6453641_rd.jpg',
         Description: 'Add a touch of class and confidence to your living space with the elegantly designed, ultra-slim Lenovo Q24i-1L monitor. Be it in the living room or the study, this sleek display with Full-HD resolution and NearEdgeless bezels bring beauty and functionality together in a perfect 23.8-inch package.',
-        Category_name: 'Monitor',
+        Category_name: 'Monitors',
         Category_id: 3
     }
 

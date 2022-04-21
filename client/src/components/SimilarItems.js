@@ -2,6 +2,7 @@ import products from "../data/products";
 import Products from "./Products";
 import { Link } from "react-router-dom";
 
+//attention
 const SimilarItems = (props) => {
     let filtered = products.filter((result) => {
         return result.Category_name === props.selectedProductCat && 

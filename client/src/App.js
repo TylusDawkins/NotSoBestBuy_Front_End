@@ -3,7 +3,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {  Routes, Route} from 'react-router-dom'
 import { BrowserRouter as Router} from 'react-router-dom';
-import {SearchValueContext, SearchResultsContext, CategoriesContext} from './components/SearchContext'
+import {SearchValueContext, SearchResultsContext, CategoriesContext, CartContext} from './components/SearchContext'
 
 import Home from './pages/Home';
 import Deals from './pages/Deals';
@@ -25,6 +25,8 @@ function App() {
   const [searchResults, setSearchResults] = useState([])
   const [searching, setSearching] = useState("")
   const [categories, setCategories] = useState([])
+  const [cart, setCart] = useState([])
+
 
   const handleLogOut = () => {
     setUser(null)
@@ -55,6 +57,7 @@ function App() {
     <SearchValueContext.Provider value={{searchValue, setSearchValue}}>
     <SearchResultsContext.Provider value={{searchResults, setSearchResults}}>
     <CategoriesContext.Provider value={{categories, setCategories}}>
+    <CartContext.Provider value={{cart, setCart}}>
     <Router>
     <div className="App">
       <Nav 
@@ -81,6 +84,7 @@ function App() {
       <Footer/>
     </div>
     </Router>
+    </CartContext.Provider>
     </CategoriesContext.Provider>
     </SearchResultsContext.Provider>
     </SearchValueContext.Provider>

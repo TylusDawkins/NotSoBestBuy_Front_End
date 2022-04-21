@@ -67,7 +67,7 @@ const SearchBar = ({placeholder}) => {
             <input type='text' placeholder={placeholder} value={searching} onChange={handleChange}/>
             {searchValue.length !==0  && (<div className="suggestions">
             {searchValue.slice(0, 5).map((product) => (
-                <button onClick={handleChange}>{product.name}</button>
+                <button onClick={handleChange}>{product.name.substring(0, 20)}</button>
             ))}
             </div>)}
             </div> 

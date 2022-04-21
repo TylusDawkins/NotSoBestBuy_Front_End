@@ -14,7 +14,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
             </li>
         </ul>
     }
-
+//attention
     const publicOptions = (
         <ul className='navbar-nav mr-auto'>
                         <li className='nav-item'>
@@ -70,7 +70,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
                             </NavLink>
                         </li>
                     </ul>
-                            <SearchBar placeholder={'Search our products'} data={products}/>
+                            <SearchBar placeholder={'Search our products'}/>
                         {authenticated && user ? authenticatedOptions : publicOptions}
                 </div>
         </nav>

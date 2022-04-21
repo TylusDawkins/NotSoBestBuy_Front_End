@@ -4,15 +4,30 @@ import {useState, useEffect, useContext} from "react";
 import { SearchValueContext, SearchResultsContext, SearchingContext} from '../SearchContext';
 import products from '../../data/products'
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+//attention
 
 const SearchBar = ({placeholder}) => {
     let navigate = useNavigate()
+    const [productList, setProductList] = useState([])
     const {searchValue, setSearchValue} = useContext(SearchValueContext)
     const {SearchResults, setSearchResults} = useContext(SearchResultsContext)
     const [searching, setSearching] = useState("")
 
+    
+    useEffect(() => {
+        const getProducts = async () => {
+            const product = await axios.get('http://localhost:3001/product')
+            setProductList(product.data)
+        }
+        getProducts()
+        
+    }, [])
+
+
     const handleChange = (e) => {
+
         let searchPrompt = ""
         if (e.target.value.length !== 0 ){
             searchPrompt = e.target.value
@@ -22,8 +37,8 @@ const SearchBar = ({placeholder}) => {
         }
         setSearching(searchPrompt)
 
-        let newSearch = products.filter((product) => {
-            return product.Name.toLowerCase().includes(searchPrompt.toLowerCase())
+        let newSearch = productList.filter((product) => {
+            return product.name.toLowerCase().includes(searchPrompt.toLowerCase())
 
         })
         if (searchPrompt === "") {
@@ -44,7 +59,7 @@ const SearchBar = ({placeholder}) => {
         setSearching("")
         navigate('/search/0/0')}
     }
-    
+    console.log(productList)
     return (
         <div className="search">
             <div className="searchInput">
@@ -52,7 +67,7 @@ const SearchBar = ({placeholder}) => {
             <input type='text' placeholder={placeholder} value={searching} onChange={handleChange}/>
             {searchValue.length !==0  && (<div className="suggestions">
             {searchValue.slice(0, 5).map((product) => (
-                <button onClick={handleChange}>{product.Name}</button>
+                <button onClick={handleChange}>{product.name}</button>
             ))}
             </div>)}
             </div> 

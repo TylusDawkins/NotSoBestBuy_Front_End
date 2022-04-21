@@ -6,7 +6,7 @@ import "../styles/Product.css"
 import Filter from '../components/Filter'
 import '../styles/SearchResults.css'
 
-
+//attention
 const SearchResults = () => {
 
 const {searchValue, setSearchValue} = useContext(SearchValueContext)
@@ -17,19 +17,23 @@ const [catfilteredResults, setCatFilteredResults] = useState([])
 const [pricefilteredResults, setPriceFilteredResults] = useState([])
 const [view, setView] = useState(false)
 
+// useEffect(() => {
+    
+// })
+
 useEffect(() => {
     let filtering = []
     if (val === "0" && id !== "0") {
         filtering = searchResults.filter((results) => {
-            return results.Category_id === parseInt(id)
+            return results.categoryId === parseInt(id)
         })
         setCatFilteredResults(filtering)
     }
     else if (val !=="0" && id!=="0"){
         let firstFilter = searchResults.filter((results) => {
-            return results.Category_id === parseInt(id)
+            return results.categoryId === parseInt(id)
         }).filter((res) => {
-            return res.Price <= parseInt(val)
+            return res.price <= parseInt(val)
         })
         
         setCatFilteredResults(firstFilter)
@@ -37,7 +41,7 @@ useEffect(() => {
     }
     else if (id ==="0" && val !=="0") {
         filtering = searchResults.filter((results) => {
-        return results.Price <= parseInt(val)}
+        return results.price <= parseInt(val)}
     )
     setPriceFilteredResults(filtering)
 }
@@ -58,9 +62,9 @@ useEffect(() => {
                         <Link to={`/product/${value.id}`}>
                         <Products
                             key={value.id}
-                            Name={value.Name}
-                            Image={value.Image}
-                            Price={value.Price}/>
+                            Name={value.name}
+                            Image={value.image}
+                            Price={value.price}/>
                         </Link>
                     </div>
                 ))}
@@ -70,9 +74,9 @@ useEffect(() => {
                                         <Link to={`/product/${value.id}`}>
                                         <Products
                                             key={value.id}
-                                            Name={value.Name}
-                                            Image={value.Image}
-                                            Price={value.Price}/>
+                                            Name={value.name}
+                                            Image={value.image}
+                                            Price={value.price}/>
                                         </Link>
                                     </div>
                                 ))}
@@ -81,9 +85,9 @@ useEffect(() => {
                                         <Link to={`/product/${value.id}`}>
                                         <Products
                                             key={value.id}
-                                            Name={value.Name}
-                                            Image={value.Image}
-                                            Price={value.Price}/>
+                                            Name={value.name}
+                                            Image={value.image}
+                                            Price={value.price}/>
                                         </Link>
                                     </div>
                                 ))}

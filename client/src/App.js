@@ -3,7 +3,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {  Routes, Route} from 'react-router-dom'
 import { BrowserRouter as Router} from 'react-router-dom';
-import {SearchValueContext, SearchResultsContext} from './components/SearchContext'
+import {SearchValueContext, SearchResultsContext, CategoriesContext} from './components/SearchContext'
 
 import Home from './pages/Home';
 import Deals from './pages/Deals';
@@ -16,6 +16,7 @@ import Register from './pages/Register'
 import SignIn from './pages/SignIn';
 import Checkout from './pages/Checkout';
 import { CheckSession } from './services/Auth'
+import axios from 'axios';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -23,6 +24,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [searching, setSearching] = useState("")
+  const [categories, setCategories] = useState([])
 
   const handleLogOut = () => {
     setUser(null)
@@ -35,6 +37,13 @@ function App() {
     setUser(user)
     toggleAuthenticated(true)
   }
+  useEffect(() => {
+    const getCategories = async () => {
+      const categories = await axios.get('http://localhost:3001/category')
+      setCategories(categories.data)
+    }
+    getCategories()
+  }, [])
   
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -45,6 +54,7 @@ function App() {
   return (
     <SearchValueContext.Provider value={{searchValue, setSearchValue}}>
     <SearchResultsContext.Provider value={{searchResults, setSearchResults}}>
+    <CategoriesContext.Provider value={{categories, setCategories}}>
     <Router>
     <div className="App">
       <Nav 
@@ -71,6 +81,7 @@ function App() {
       <Footer/>
     </div>
     </Router>
+    </CategoriesContext.Provider>
     </SearchResultsContext.Provider>
     </SearchValueContext.Provider>
   );

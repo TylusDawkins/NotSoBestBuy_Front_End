@@ -1,13 +1,24 @@
 import '../styles/SearchResults.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-
+import { SearchResultsContext, SearchValueContext, CategoriesContext } from "../components/SearchContext"
+import { useContext } from 'react'
 
 //attention
 const Filter = (props) => {
-        let catIdArray = props.searchResults.map((category) => {
-            return [category.Category_name,category.Category_id]
+    
+    const {categories, setCategories} = useContext(CategoriesContext)
+
+        let categoryName = categories.map((category) => {
+            return [category.id, category.name]
         })
+        
+        let nameObj = Object.fromEntries(categoryName)
+    
+        let catIdArray = props.searchResults.map((category) => {
+            return [nameObj[category.categoryId],category.categoryId]
+        })
+
         let catIdObject = Object.fromEntries(catIdArray)
         let catIdObjectKeys = Object.keys(catIdObject)
         let {id, val} = useParams()

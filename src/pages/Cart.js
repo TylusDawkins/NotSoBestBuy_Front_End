@@ -88,9 +88,9 @@ const Cart = (props) => {
             {cartItems.length !== 0 && cartItems.map((item) => (
                 <div>
                 <h6>{item.name}</h6>
-                <h6>{item.price}</h6>
                 <img src={item.image} alt={item.name} />
-                <h6>{item.quantity}</h6>
+                <h6> Total: ${parseFloat(item.price) * parseFloat(item.quantity)}</h6>
+                <h6>${item.price} X: {item.quantity}</h6>
                 <button name={item.id} onClick={handleUpdate}>+</button>
                 <button name={item.id} onClick={handleDelete}>Remove</button>
                 </div>

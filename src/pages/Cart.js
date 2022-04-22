@@ -15,33 +15,8 @@ const Cart = (props) => {
 
     useEffect(() => {
 
-        if (cartInsert !== undefined) {
-            let match = cartItems.includes({name: cartInsert.name,
-                price: cartInsert.price,
-                image: cartInsert.image,
-                description: cartInsert.description,
-                quantity: 1,
-                categoryId: cartInsert.categoryId})
+        if (cartInsert !== undefined && id !== 'undefined') {
             
-            console.log(match)
-            if (match) {
-                const updateCart = async () => {
-
-                    const cartData = {
-    
-                        name: cartInsert.name,
-                                price: cartInsert.price,
-                                image: cartInsert.image,
-                                description: cartInsert.description,
-                                quantity: (parseInt(cartInsert.quantity) + 1),
-                                categoryId: cartInsert.categoryId
-                    }
-                    await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${id}`, cartData)
-                }
-                updateCart()
-                setCartInsert()
-            }
-            else {
                 const createCart = async () => {
                         const cartData = {
                             name: cartInsert.name,
@@ -55,12 +30,7 @@ const Cart = (props) => {
                     }
                     createCart()
                     setCartInsert()
-                 
             }
-        }
-        else {
-            
-        }
     },[cartInsert, setCartInsert, id, cartItems])
     
     

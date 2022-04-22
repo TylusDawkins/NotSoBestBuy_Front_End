@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import { SearchResultsContext, SearchValueContext } from "../components/SearchContext";
+import { SearchResultsContext, SearchValueContext, CartContext } from "../components/SearchContext";
 import Products from "../components/Products";
 import { Link, useParams } from "react-router-dom";
 import "../styles/Product.css"
@@ -11,11 +11,13 @@ const SearchResults = () => {
 
 const {searchValue, setSearchValue} = useContext(SearchValueContext)
 const {searchResults, setSearchResults} = useContext(SearchResultsContext)
+const {cartInsert, setCartInsert} = useContext(CartContext)
 
 let {id, val} = useParams()
 const [catfilteredResults, setCatFilteredResults] = useState([])
 const [pricefilteredResults, setPriceFilteredResults] = useState([])
 const [view, setView] = useState(false)
+
 
 // useEffect(() => {
     
@@ -47,6 +49,10 @@ useEffect(() => {
 }
 }, [id, val, searchResults])
 
+const addToCartHandler = (value) => {
+    setCartInsert(value)
+}
+
     return (
         <div className="container">
             <div>
@@ -64,7 +70,9 @@ useEffect(() => {
                             key={value.id}
                             Name={value.name}
                             Image={value.image}
-                            Price={value.price}/>
+                            Price={value.price}
+                            details={value}
+                            addToCart={addToCartHandler}/>
                         </Link>
                     </div>
                 ))}
@@ -76,7 +84,9 @@ useEffect(() => {
                                             key={value.id}
                                             Name={value.name}
                                             Image={value.image}
-                                            Price={value.price}/>
+                                            Price={value.price}
+                                            details={value}
+                                            addToCart={addToCartHandler}/>
                                         </Link>
                                     </div>
                                 ))}
@@ -87,7 +97,9 @@ useEffect(() => {
                                             key={value.id}
                                             Name={value.name}
                                             Image={value.image}
-                                            Price={value.price}/>
+                                            Price={value.price}
+                                            details={value}
+                                            addToCart={addToCartHandler}/>
                                         </Link>
                                     </div>
                                 ))}

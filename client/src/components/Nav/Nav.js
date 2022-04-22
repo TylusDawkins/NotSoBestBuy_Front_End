@@ -1,7 +1,7 @@
 import '../../styles/Nav.css'
 import { NavLink, Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import products from '../../data/products'
+
 const Nav = ({authenticated, user, handleLogOut}) => {
     let authenticatedOptions
     if (user) {
@@ -14,6 +14,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
             </li>
         </ul>
     }
+    console.log(user)
 //attention
     const publicOptions = (
         <ul className='navbar-nav mr-auto'>
@@ -65,7 +66,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
                             </NavLink>
                         </li>
                         <li className='nav-item'>
-                            <NavLink className="nav-link" to="/cart" exact="true">
+                            <NavLink className="nav-link" to={user!== null ? `/cart/${user.id}` : `/`} exact="true">
                                 <i className="fa-solid fa-cart-arrow-down"></i>Cart
                             </NavLink>
                         </li>

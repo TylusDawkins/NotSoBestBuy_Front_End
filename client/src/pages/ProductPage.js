@@ -1,6 +1,6 @@
-
+import { SearchResultsContext, SearchValueContext, CartContext } from "../components/SearchContext";
 import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import '../styles/Product.css'
 import SimilarItems from "../components/SimilarItems";
 import axios from "axios";
@@ -8,7 +8,7 @@ import axios from "axios";
 //attention
 const ProductPage = () => {
     let {id} = useParams()
-    
+    const {cartInsert, setCartInsert} = useContext(CartContext)
     const [productList, setProductList] = useState([])
     const [categoryList, setCategoryList] = useState([])
     const [selectedProduct, setSelectedProduct] = useState({})
@@ -41,8 +41,10 @@ const ProductPage = () => {
             setSelectedProductCat(selectProductCat)}
         }, [id, productList, selectedProduct, categoryList])
 
-        console.log(selectedProduct)
-        console.log(selectedProductCat)
+
+        const addToCartHandler = (value) => {
+            setCartInsert(value)
+        }
         return (
             <div>
 
@@ -56,7 +58,7 @@ const ProductPage = () => {
                 </div>
                 <SimilarItems selectedProductCat={selectedProductCat.name}
                             selectedProductId={selectedProduct.id}/>
-                
+                <button onClick={addToCartHandler} className="cart-btn">Add To Cart</button>
                 </div>
                 }
             </div>

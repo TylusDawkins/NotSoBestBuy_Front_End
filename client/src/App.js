@@ -25,7 +25,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([])
   const [searching, setSearching] = useState("")
   const [categories, setCategories] = useState([])
-  const [cart, setCart] = useState([])
+  const [cartInsert, setCartInsert] = useState()
 
 
   const handleLogOut = () => {
@@ -57,7 +57,7 @@ function App() {
     <SearchValueContext.Provider value={{searchValue, setSearchValue}}>
     <SearchResultsContext.Provider value={{searchResults, setSearchResults}}>
     <CategoriesContext.Provider value={{categories, setCategories}}>
-    <CartContext.Provider value={{cart, setCart}}>
+    <CartContext.Provider value={{cartInsert, setCartInsert}}>
     <Router>
     <div className="App">
       <Nav 
@@ -69,7 +69,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/deals' element={<Deals/>}/>
-        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/cart/:id' element={<Cart
+                                        user={user}/>}/>
         <Route path='/product/:id' element={<ProductPage/>}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/signin' element={<SignIn 

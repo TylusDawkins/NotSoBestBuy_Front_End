@@ -7,7 +7,8 @@ const Products = (props) => {
     let navigate = useNavigate()
     const handleClick = (e) => {
         e.preventDefault()
-        navigate('/cart')
+        // navigate('/cart')
+        props.addToCart(props.details)
     }
     return (
                 <div className="product">

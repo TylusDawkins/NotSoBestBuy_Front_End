@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Products from './Products';
 import '../styles/Dealbar.css'
 import axios from 'axios'
+import { SearchResultsContext, SearchValueContext, CartContext } from "../components/SearchContext";
 
 
 const Dealbar = (props) => {
-
+    const {cartInsert, setCartInsert} = useContext(CartContext)
     const [productList, setProductList] = useState([])
 
 
@@ -24,6 +25,9 @@ const Dealbar = (props) => {
     })
     console.log(productList)
     console.log(newDeal)
+    const addToCartHandler = (value) => {
+        setCartInsert(value)
+    }
     return (
         <div>
             <h4>{newDeal.categoryId}</h4>
@@ -37,7 +41,10 @@ const Dealbar = (props) => {
                     key={value.id}
                     Name={value.name}
                     Image={value.image}
-                    Price={value.price}/>
+                    Price={value.price}
+                    details={value}
+                    addToCart={addToCartHandler}/>
+                    
                 </Link>
             </div>
             ))}

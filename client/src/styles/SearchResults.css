@@ -14,4 +14,8 @@
     flex-direction: column;
 }
 
+.filter-link {
+    cursor: pointer;
+}
+
 

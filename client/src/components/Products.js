@@ -1,13 +1,14 @@
-import products from "../data/products";
+
 import '../styles/Product.css'
 import { useNavigate } from "react-router-dom";
 
-
+//attention
 const Products = (props) => {
     let navigate = useNavigate()
     const handleClick = (e) => {
         e.preventDefault()
-        navigate('/cart')
+        // navigate('/cart')
+        props.addToCart(props.details)
     }
     return (
                 <div className="product">

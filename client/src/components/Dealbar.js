@@ -1,17 +1,36 @@
-import React, {useState} from 'react'
-import products from '../data/products';
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Products from './Products';
 import '../styles/Dealbar.css'
+import axios from 'axios'
+import { SearchResultsContext, SearchValueContext, CartContext } from "../components/SearchContext";
+
+
 const Dealbar = (props) => {
-    const [dealResults, setDealResults] = useState([])
-    let newDeal = products.filter((product) => {
-        return product.Category_id === props.id
+    const {cartInsert, setCartInsert} = useContext(CartContext)
+    const [productList, setProductList] = useState([])
+
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const products = await axios.get('http://localhost:3001/product')
+            setProductList(products.data)
+            // console.log(products)
+        }
+        getProducts()
+
+    }, [])
+    let newDeal = productList.filter((product) => {
+        return product.categoryId === props.id
     })
-    
+    console.log(productList)
+    console.log(newDeal)
+    const addToCartHandler = (value) => {
+        setCartInsert(value)
+    }
     return (
         <div>
-            <h4>{newDeal[1].Category_name}</h4>
+            <h4>{newDeal.categoryId}</h4>
         <div className='deal-container'>
             
             {newDeal.map((value) => (
@@ -20,9 +39,12 @@ const Dealbar = (props) => {
                     
                 <Products
                     key={value.id}
-                    Name={value.Name}
-                    Image={value.Image}
-                    Price={value.Price}/>
+                    Name={value.name}
+                    Image={value.image}
+                    Price={value.price}
+                    details={value}
+                    addToCart={addToCartHandler}/>
+                    
                 </Link>
             </div>
             ))}

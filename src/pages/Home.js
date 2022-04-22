@@ -7,7 +7,7 @@ const Home = () => {
         const getProduct = async () => {
             let rand = Math.floor(Math.random() * 9)
             console.log(rand)
-            const product = await axios.get(`https://notsobestbuy-front-end.herokuapp.com/product/${rand}`)
+            const product = await axios.get(`https://notsobestbuyback-end.herokuapp.com/product/${rand}`)
         }
         getProduct()
     }, [])

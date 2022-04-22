@@ -3,12 +3,22 @@ import Products from "./Products";
 import { Link } from "react-router-dom";
 import { SearchResultsContext, SearchValueContext, CartContext } from "../components/SearchContext";
 import React, {useState, useEffect, useContext} from "react";
+import axios from "axios";
 
 //attention
 const SimilarItems = (props) => {
+    const [productList, setProductList] = useState([])
+    useEffect(() => {
+        const getProducts = async () => {
+            const products = await axios.get('https://notsobestbuyback-end.herokuapp.com/product')
+            setProductList(products.data)
+        }
+        getProducts()
+
+    }, [])
     const {cartInsert, setCartInsert} = useContext(CartContext)
-    let filtered = products.filter((result) => {
-        return result.Category_name === props.selectedProductCat && 
+    let filtered = productList.filter((result) => {
+        return result.categoryId === props.selectedProductCat && 
                 result.id !== props.selectedProductId
     })
     const addToCartHandler = (value) => {
@@ -21,9 +31,10 @@ const SimilarItems = (props) => {
         <Link to={`/product/${value.id}`}>
             <Products
                 key={value.id}
-                Name={value.Name}
-                Image={value.Image}
-                Price={value.Price}details={value}
+                Name={value.name}
+                Image={value.image}
+                Price={value.price}
+                details={value}
                 addToCart={addToCartHandler}/>
         </Link>
             ))}

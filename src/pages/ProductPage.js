@@ -55,10 +55,10 @@ const ProductPage = () => {
                 <h2>{selectedProduct.name}</h2>
                 <img src={selectedProduct.image} alt={selectedProduct.name}/>
                 <p>{selectedProduct.description}</p>
-                </div>
-                <SimilarItems selectedProductCat={selectedProductCat.name}
-                            selectedProductId={selectedProduct.id}/>
                 <button onClick={addToCartHandler} className="cart-btn">Add To Cart</button>
+                </div>
+                <SimilarItems selectedProductCat={selectedProductCat.id}
+                            selectedProductId={selectedProduct.id}/>
                 </div>
                 }
             </div>

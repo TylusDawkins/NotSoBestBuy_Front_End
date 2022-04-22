@@ -36,7 +36,7 @@ const Cart = (props) => {
                                 quantity: (parseInt(cartInsert.quantity) + 1),
                                 categoryId: cartInsert.categoryId
                     }
-                    await axios.put(`http://localhost:3001/cart/change/${id}`, cartData)
+                    await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${id}`, cartData)
                 }
                 updateCart()
                 setCartInsert()
@@ -51,7 +51,7 @@ const Cart = (props) => {
                             quantity: 1,
                             categoryId: cartInsert.categoryId
                         }
-                        await axios.post(`http://localhost:3001/cart/additem/${id}`, cartData)
+                        await axios.post(`https://notsobestbuyback-end.herokuapp.com/cart/additem/${id}`, cartData)
                     }
                     createCart()
                     setCartInsert()
@@ -81,7 +81,7 @@ const Cart = (props) => {
             
         }
 
-        await axios.put(`http://localhost:3001/cart/change/${targeter.id}`, quantUpdate)
+        await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${targeter.id}`, quantUpdate)
         setClick((preval) => {
             return preval + 1})
     }
@@ -98,7 +98,7 @@ const Cart = (props) => {
             categoryId: targeter.categoryId
             
         }
-        await axios.put(`http://localhost:3001/cart/change/${targeter.id}`, quantUpdate)
+        await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${targeter.id}`, quantUpdate)
         setClick((preval) => {
             return preval + 1})
     }
@@ -107,7 +107,7 @@ const Cart = (props) => {
         let val = e.target.name
         const targeter = cartItems.find((item) => item.id === parseInt(val)
         )
-        await axios.delete(`http://localhost:3001/cart/remove/${targeter.id}`)
+        await axios.delete(`https://notsobestbuyback-end.herokuapp.com/cart/remove/${targeter.id}`)
         setClick((preval) => {
             return preval + 1})
     }
@@ -115,7 +115,7 @@ const Cart = (props) => {
 
         const getCart = async () => {
             if (id !== 'undefined'){
-                const cartItemList = await axios.get(`http://localhost:3001/cart/${id}`)
+                const cartItemList = await axios.get(`https://notsobestbuyback-end.herokuapp.com/cart/${id}`)
                 setCartItems(cartItemList.data)
             }
         }

@@ -16,8 +16,8 @@ const ProductPage = () => {
     
     useEffect(() => {
         const getProducts = async () => {
-            const products = await axios.get('http://localhost:3001/product')
-            const categories = await axios.get('http://localhost:3001/category')
+            const products = await axios.get('https://notsobestbuyback-end.herokuapp.com/product')
+            const categories = await axios.get('https://notsobestbuyback-end.herokuapp.com/category')
             setProductList(products.data)
             setCategoryList(categories.data)
 

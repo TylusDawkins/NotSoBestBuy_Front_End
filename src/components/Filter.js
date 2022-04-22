@@ -12,7 +12,7 @@ const Filter = (props) => {
 
     useEffect(() => {
         const getCategories = async () => {
-            const categories = await axios.get('http://localhost:3001/category')
+            const categories = await axios.get('https://notsobestbuyback-end.herokuapp.com/category')
             setCategories(categories.data)
           }
           getCategories()

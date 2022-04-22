@@ -73,6 +73,7 @@ const Cart = (props) => {
         const getCart = async () => {
             const cartItemList = await axios.get(`http://localhost:3001/cart/${id}`)
             setCartItems(cartItemList.data)
+            console.log(cartItemList)
         }
         getCart()
     }, [id, click])

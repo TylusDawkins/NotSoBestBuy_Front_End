@@ -2,12 +2,21 @@ import '../styles/SearchResults.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { SearchResultsContext, SearchValueContext, CategoriesContext } from "../components/SearchContext"
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
+import axios from 'axios'
 
 //attention
 const Filter = (props) => {
     
     const {categories, setCategories} = useContext(CategoriesContext)
+
+    useEffect(() => {
+        const getCategories = async () => {
+            const categories = await axios.get('http://localhost:3001/category')
+            setCategories(categories.data)
+          }
+          getCategories()
+        }, [])
 
         let categoryName = categories.map((category) => {
             return [category.id, category.name]

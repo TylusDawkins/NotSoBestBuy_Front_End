@@ -12,6 +12,7 @@ const Cart = (props) => {
     const {searchResults, setSearchResults} = useContext(SearchResultsContext)
     const {cartInsert, setCartInsert} = useContext(CartContext)
     const [cartItems, setCartItems] = useState([])
+    const [click, setClick] = useState(0)
 
     console.log(props.user)
     useEffect(() => {
@@ -55,7 +56,8 @@ const Cart = (props) => {
         }
         console.log(quantUpdate)
         await axios.put(`http://localhost:3001/cart/change/${targeter.id}`, quantUpdate)
-        
+        setClick((preval) => {
+            return preval + 1})
     }
     
     const handleDelete = async (e) => {
@@ -63,6 +65,8 @@ const Cart = (props) => {
         const targeter = cartItems.find((item) => item.id === parseInt(val)
         )
         await axios.delete(`http://localhost:3001/cart/remove/${targeter.id}`)
+        setClick((preval) => {
+            return preval + 1})
     }
     useEffect(() => {
 
@@ -71,7 +75,7 @@ const Cart = (props) => {
             setCartItems(cartItemList.data)
         }
         getCart()
-    }, [id, handleUpdate(), handleDelete()])
+    }, [id, click])
 
     console.log(cartItems)
     return (

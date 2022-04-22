@@ -11,7 +11,6 @@ const SimilarItems = (props) => {
         return result.Category_name === props.selectedProductCat && 
                 result.id !== props.selectedProductId
     })
-    console.log(filtered)
     const addToCartHandler = (value) => {
         setCartInsert(value)
     }

@@ -59,7 +59,7 @@ const SearchBar = ({placeholder}) => {
         setSearching("")
         navigate('/search/0/0')}
     }
-    console.log(productList)
+
     return (
         <div className="search">
             <div className="searchInput">

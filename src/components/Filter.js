@@ -21,7 +21,6 @@ const Filter = (props) => {
         let categoryName = categories.map((category) => {
             return [category.id, category.name]
         })
-        console.log(categoryName)
         let nameObj = Object.fromEntries(categoryName)
     
         let catIdArray = props.searchResults.map((category) => {

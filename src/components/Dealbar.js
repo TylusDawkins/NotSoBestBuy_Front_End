@@ -15,7 +15,6 @@ const Dealbar = (props) => {
         const getProducts = async () => {
             const products = await axios.get('http://localhost:3001/product')
             setProductList(products.data)
-            // console.log(products)
         }
         getProducts()
 
@@ -23,8 +22,7 @@ const Dealbar = (props) => {
     let newDeal = productList.filter((product) => {
         return product.categoryId === props.id
     })
-    console.log(productList)
-    console.log(newDeal)
+
     const addToCartHandler = (value) => {
         setCartInsert(value)
     }

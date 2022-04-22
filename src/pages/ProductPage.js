@@ -20,10 +20,10 @@ const ProductPage = () => {
             const categories = await axios.get('http://localhost:3001/category')
             setProductList(products.data)
             setCategoryList(categories.data)
-            // console.log(products)
+
         }
         getProducts()
-        console.log(productList)
+
         
         
     }, [])

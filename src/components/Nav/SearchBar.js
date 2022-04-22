@@ -18,7 +18,7 @@ const SearchBar = ({placeholder}) => {
     
     useEffect(() => {
         const getProducts = async () => {
-            const product = await axios.get('http://localhost:3001/product')
+            const product = await axios.get('https://notsobestbuyback-end.herokuapp.com/product')
             setProductList(product.data)
         }
         getProducts()

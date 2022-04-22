@@ -13,7 +13,7 @@ const Dealbar = (props) => {
 
     useEffect(() => {
         const getProducts = async () => {
-            const products = await axios.get('http://localhost:3001/product')
+            const products = await axios.get('https://notsobestbuyback-end.herokuapp.com/product')
             setProductList(products.data)
         }
         getProducts()

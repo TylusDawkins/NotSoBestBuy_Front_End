@@ -8,29 +8,55 @@ import { useParams } from 'react-router-dom';
 
 const Cart = (props) => {
     let {id} = useParams()
-    console.log(id)
     const {searchResults, setSearchResults} = useContext(SearchResultsContext)
     const {cartInsert, setCartInsert} = useContext(CartContext)
     const [cartItems, setCartItems] = useState([])
     const [click, setClick] = useState(0)
 
-    console.log(props.user)
     useEffect(() => {
-        console.log(cartInsert)
+
         if (cartInsert !== undefined) {
-        const createCart = async () => {
-                const cartData = {
-                    name: cartInsert.name,
-                    price: cartInsert.price,
-                    image: cartInsert.image,
-                    description: cartInsert.description,
-                    quantity: 1,
-                    categoryId: cartInsert.categoryId
+            let match = cartItems.includes({name: cartInsert.name,
+                price: cartInsert.price,
+                image: cartInsert.image,
+                description: cartInsert.description,
+                quantity: 1,
+                categoryId: cartInsert.categoryId})
+            
+            console.log(match)
+            if (match) {
+                const updateCart = async () => {
+
+                    const cartData = {
+    
+                        name: cartInsert.name,
+                                price: cartInsert.price,
+                                image: cartInsert.image,
+                                description: cartInsert.description,
+                                quantity: (parseInt(cartInsert.quantity) + 1),
+                                categoryId: cartInsert.categoryId
+                    }
+                    await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${id}`, cartData)
                 }
-                await axios.post(`http://localhost:3001/cart/additem/${id}`, cartData)
+                updateCart()
+                setCartInsert()
             }
-            createCart()
-            setCartInsert()
+            else {
+                const createCart = async () => {
+                        const cartData = {
+                            name: cartInsert.name,
+                            price: cartInsert.price,
+                            image: cartInsert.image,
+                            description: cartInsert.description,
+                            quantity: 1,
+                            categoryId: cartInsert.categoryId
+                        }
+                        await axios.post(`https://notsobestbuyback-end.herokuapp.com/cart/additem/${id}`, cartData)
+                    }
+                    createCart()
+                    setCartInsert()
+                 
+            }
         }
         else {
             
@@ -40,11 +66,11 @@ const Cart = (props) => {
     
     
     const handleUpdateAdd = async (e) => {
-        console.log(cartItems)
+        
         let val = e.target.name
         const targeter = cartItems.find((item) => item.id === parseInt(val)
         )
-        console.log(targeter)
+
         let quantUpdate = {
             name: targeter.name,
             price: targeter.price,
@@ -54,17 +80,15 @@ const Cart = (props) => {
             categoryId: targeter.categoryId
             
         }
-        console.log(quantUpdate)
-        await axios.put(`http://localhost:3001/cart/change/${targeter.id}`, quantUpdate)
+
+        await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${targeter.id}`, quantUpdate)
         setClick((preval) => {
             return preval + 1})
     }
     const handleUpdateMinus = async (e) => {
-        console.log(cartItems)
         let val = e.target.name
         const targeter = cartItems.find((item) => item.id === parseInt(val)
         )
-        console.log(targeter)
         let quantUpdate = {
             name: targeter.name,
             price: targeter.price,
@@ -74,8 +98,7 @@ const Cart = (props) => {
             categoryId: targeter.categoryId
             
         }
-        console.log(quantUpdate)
-        await axios.put(`http://localhost:3001/cart/change/${targeter.id}`, quantUpdate)
+        await axios.put(`https://notsobestbuyback-end.herokuapp.com/cart/change/${targeter.id}`, quantUpdate)
         setClick((preval) => {
             return preval + 1})
     }
@@ -84,7 +107,7 @@ const Cart = (props) => {
         let val = e.target.name
         const targeter = cartItems.find((item) => item.id === parseInt(val)
         )
-        await axios.delete(`http://localhost:3001/cart/remove/${targeter.id}`)
+        await axios.delete(`https://notsobestbuyback-end.herokuapp.com/cart/remove/${targeter.id}`)
         setClick((preval) => {
             return preval + 1})
     }
@@ -92,14 +115,13 @@ const Cart = (props) => {
 
         const getCart = async () => {
             if (id !== 'undefined'){
-                const cartItemList = await axios.get(`http://localhost:3001/cart/${id}`)
+                const cartItemList = await axios.get(`https://notsobestbuyback-end.herokuapp.com/cart/${id}`)
                 setCartItems(cartItemList.data)
             }
         }
         getCart()
     }, [id, click])
 
-    console.log(cartItems)
     return (
         <div className='cart'>
             

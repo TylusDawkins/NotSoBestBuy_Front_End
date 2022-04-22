@@ -12,7 +12,7 @@ const Filter = (props) => {
 
     useEffect(() => {
         const getCategories = async () => {
-            const categories = await axios.get('http://localhost:3001/category')
+            const categories = await axios.get('https://notsobestbuyback-end.herokuapp.com/category')
             setCategories(categories.data)
           }
           getCategories()
@@ -21,7 +21,6 @@ const Filter = (props) => {
         let categoryName = categories.map((category) => {
             return [category.id, category.name]
         })
-        console.log(categoryName)
         let nameObj = Object.fromEntries(categoryName)
     
         let catIdArray = props.searchResults.map((category) => {

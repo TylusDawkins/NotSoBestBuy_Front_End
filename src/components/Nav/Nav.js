@@ -14,7 +14,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
             </li>
         </ul>
     }
-    console.log(user)
+
 //attention
     const publicOptions = (
         <ul className='navbar-nav mr-auto'>

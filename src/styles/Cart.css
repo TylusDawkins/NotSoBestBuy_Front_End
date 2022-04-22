@@ -5,6 +5,11 @@
 
 .order-list{
     flex: 2;
+
+}
+
+.order-list img {
+    width: 10rem;
 }
 
 .summary-list {

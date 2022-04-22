@@ -39,7 +39,7 @@ const Cart = (props) => {
     
     
     
-    const handleUpdate = async (e) => {
+    const handleUpdateAdd = async (e) => {
         console.log(cartItems)
         let val = e.target.name
         const targeter = cartItems.find((item) => item.id === parseInt(val)
@@ -51,6 +51,26 @@ const Cart = (props) => {
             image: targeter.image,
             description: targeter.description,
             quantity: (parseInt(targeter.quantity) + 1),
+            categoryId: targeter.categoryId
+            
+        }
+        console.log(quantUpdate)
+        await axios.put(`http://localhost:3001/cart/change/${targeter.id}`, quantUpdate)
+        setClick((preval) => {
+            return preval + 1})
+    }
+    const handleUpdateMinus = async (e) => {
+        console.log(cartItems)
+        let val = e.target.name
+        const targeter = cartItems.find((item) => item.id === parseInt(val)
+        )
+        console.log(targeter)
+        let quantUpdate = {
+            name: targeter.name,
+            price: targeter.price,
+            image: targeter.image,
+            description: targeter.description,
+            quantity: (parseInt(targeter.quantity) - 1),
             categoryId: targeter.categoryId
             
         }
@@ -88,10 +108,11 @@ const Cart = (props) => {
             {cartItems.length !== 0 && cartItems.map((item) => (
                 <div>
                 <h6>{item.name}</h6>
-                <h6>{item.price}</h6>
                 <img src={item.image} alt={item.name} />
-                <h6>{item.quantity}</h6>
-                <button name={item.id} onClick={handleUpdate}>+</button>
+                <h6> Total: ${parseFloat(item.price) * parseFloat(item.quantity)}</h6>
+                <h6>${item.price} X: {item.quantity}</h6>
+                <button name={item.id} onClick={handleUpdateAdd}>+</button>
+                {item.quantity > 1 && <button name={item.id} onClick={handleUpdateMinus}>-</button>}
                 <button name={item.id} onClick={handleDelete}>Remove</button>
                 </div>
             ))}

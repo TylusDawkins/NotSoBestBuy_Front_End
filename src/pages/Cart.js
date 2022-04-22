@@ -71,9 +71,10 @@ const Cart = (props) => {
     useEffect(() => {
 
         const getCart = async () => {
-            const cartItemList = await axios.get(`http://localhost:3001/cart/${id}`)
-            setCartItems(cartItemList.data)
-            console.log(cartItemList)
+            if (id !== 'undefined'){
+                const cartItemList = await axios.get(`http://localhost:3001/cart/${id}`)
+                setCartItems(cartItemList.data)
+            }
         }
         getCart()
     }, [id, click])
